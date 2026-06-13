@@ -1,35 +1,42 @@
-# RHCSA Proof of Work: Network Time Protocol (NTP) Sync
+# RHCSA Proof of Work: Enterprise System Administration
 
-This repository contains live terminal demonstrations and technical documentation for configuring and verifying Network Time Protocol (NTP) synchronization on Rocky Linux 9 / RHEL 9 enterprise environments.
+This repository serves as a professional portfolio demonstrating enterprise Linux engineering capabilities on Rocky Linux 9 / RHEL 9 environments. Below are live terminal demonstrations showcasing core storage management and networking tasks.
 
 ---
 
 ## 📺 Live Terminal Demonstrations
 
-### 1. Network NTP Synchronization (Full System Walkthrough)
-*Recorded on: June 13, 2026* This demonstration showcases the complete configuration flow of `chronyd`, editing configuration files, managing systemd units, and validating upstream peer connectivity.
-
-[![asciinema](https://asciinema.org/a/gFT4hB9uWk0ZND2u.svg)](https://asciinema.org/a/gFT4hB9uWk0ZND2u)
-
-### 2. Network NTP Synchronization (Initial Walkthrough)
-*Recorded on: June 12, 2026* This demonstration captures the initial baseline validation and environment discovery.
+### 1. Dynamic LVM Storage Expansion
+*Topics Covered: Physical Volumes, Volume Groups, Logical Volumes, XFS Live Resizing*  
+Click the player badge below to watch the dynamic storage expansion workflow without system downtime:
 
 [![asciinema](https://asciinema.org/a/pYWLOgjccKnWreE7.svg)](https://asciinema.org/a/pYWLOgjccKnWreE7)
 
 ---
 
+### 2. Network NTP Synchronization
+*Topics Covered: chronyd Configuration, Upstream Strata Pools, systemd Units, Validation*  
+Click the player badge below to watch the complete network time synchronization and peer verification process:
+
+[![asciinema](https://asciinema.org/a/gFT4hB9uWk0ZND2u.svg)](https://asciinema.org/a/gFT4hB9uWk0ZND2u)
+
+---
+
 ## 🛠️ Technical Implementation Details
 
-In enterprise deployments, precise clock synchronization is critical for security logs (SELinux auditing), Kerberos authentication, and multi-node cluster sequencing. This project implements time synchronization using the default RHEL 9 NTP client, **Chrony**.
+### I. Logical Volume Management (LVM) Architecture
+In production deployments, storage demands fluctuate. Using LVM allows raw block devices to be aggregated into abstract pools that can be carved out or scaled up dynamically.
 
-### Core Components Configured:
-* **Service Daemon:** `chronyd` (replaces legacy `ntpd`)
-* **Configuration Path:** `/etc/chrony.conf`
-* **Management Utility:** `chronyc`
+*   **Workflow Executed:** 
+    1. Audited block layer geometry with `pvs`, `vgs`, and `lvs`.
+    2. Extended the logical volume using `lvextend`.
+    3. Grew the online XFS file system using `xfs_growfs` to reflect changes immediately without unmounting.
 
-### System Administration Workflow Executed:
+### II. Network Time Protocol (NTP) Synchronization
+Precise system time synchronization is non-negotiable in enterprise infrastructure to ensure valid security logging (SELinux audit trails), Kerberos authentication tickets, and correct multi-node database clustering sequence.
 
-1. **Verify Baseline Status:**
-   Inspected the initial synchronization state using the RHEL 9 native tool structure:
-   ```bash
-   chronyc tracking
+*   **Workflow Executed:**
+    1. Baseline synchronization checked using `chronyc tracking`.
+    2. Configured secure public NTP strata sources inside `/etc/chrony.conf`.
+    3. Persisted configuration using `systemctl restart chronyd` and `systemctl enable chronyd`.
+    4. Verified active source offset metrics via `chronyc sources -v`.
