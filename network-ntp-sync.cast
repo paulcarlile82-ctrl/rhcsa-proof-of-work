@@ -1,4 +1,10 @@
-==> client: This machine used to live in /home/paulo/rhcsa-lab but it's now at /home/paulo/rhcsa-proof-of-work.
-==> client: Depending on your current provider you may need to change the name of
-==> client: the machine to run it as a different machine.
-cat: /home/vagrant/network-ntp-sync.cast: No such file or directory
+{"version": 2, "width": 94, "height": 38, "timestamp": 1781376729, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.0944, "o", "\u001b]777;notify;Command completed;exit\u001b\\\u001b]777;precmd\u001b\\\u001b]0;paulo@Paulo:~/rhcsa-proof-of-work\u001b\\"]
+[0.095417, "o", "\u001b]7;file://Paulo/home/paulo/rhcsa-proof-of-work\u001b\\"]
+[0.095686, "o", "\u001b[?2004h[paulo@Paulo rhcsa-proof-of-work]$ "]
+[25.706715, "o", "e"]
+[26.283882, "o", "x"]
+[26.633991, "o", "i"]
+[26.991315, "o", "t"]
+[27.75788, "o", "\r\n\u001b[?2004l\r"]
+[27.758247, "o", "\u001b]777;preexec\u001b\\exit\r\n"]

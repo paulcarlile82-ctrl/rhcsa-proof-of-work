@@ -1,42 +1,39 @@
-# RHCSA Proof of Work: Enterprise System Administration
+# Red Hat Enterprise Linux 9 - Technical Proof of Work
 
-This repository serves as a professional portfolio demonstrating enterprise Linux engineering capabilities on Rocky Linux 9 / RHEL 9 environments. Below are live terminal demonstrations showcasing core storage management and networking tasks.
+Welcome to my systems administration laboratory repository. Below you will find interactive, recorded demonstrations of core enterprise Linux configurations executed on a Rocky Linux 9 environment. 
 
----
-
-## 📺 Live Terminal Demonstrations
-
-### 1. Dynamic LVM Storage Expansion
-*Topics Covered: Physical Volumes, Volume Groups, Logical Volumes, XFS Live Resizing*  
-Click the player badge below to watch the dynamic storage expansion workflow without system downtime:
-
-[![asciinema](https://asciinema.org/a/pYWLOgjccKnWreE7.svg)](https://asciinema.org/a/pYWLOgjccKnWreE7)
+### 🎬 Pacing & Viewer Controls
+* **Real-Time Execution:** To maintain transparency, four of these recordings run in real-time exactly as executed in the terminal.
+* **Optimized Playback (2x):** The **LVM Creation & Storage Expansion** lab and the **Podman Service Deployment** lab are pre-accelerated to **2x speed**. This ensures a tight, concise viewing experience by keeping the focus on command execution rather than background processing time.
+* **Interactive Terminal:** Because these are `asciinema` casts rather than flat video files, you can **pause the player at any time and copy/paste text strings directly out of the screen** to verify syntax or audit the command choices.
 
 ---
 
-### 2. Network NTP Synchronization
-*Topics Covered: chronyd Configuration, Upstream Strata Pools, systemd Units, Validation*  
-Click the player badge below to watch the complete network time synchronization and peer verification process:
+## 🛠️ Laboratory Demonstrations (Ordered by Infrastructure Stack Hierarchy)
 
-[![asciinema](https://asciinema.org/a/gFT4hB9uWk0ZND2u.svg)](https://asciinema.org/a/gFT4hB9uWk0ZND2u)
+### 1. Rootless Podman Containerization & Systemd Automation
+Demonstrates deploying a containerized Nginx web app without root privileges, passing SELinux flags (`:Z`), setting localized environment runtimes, and mapping the workflow to an independent systemd user space service that persists across machine boots.
+👉 **[Watch the Deployment Here](https://asciinema.org/a/h497197hTNWW7gAo)**
+
+### 2. Logical Volume Management (LVM) Creation & Space Expansion
+A deep dive into dynamic enterprise storage layout manipulation. Demonstrates hot-growing physical volumes, handling volume group bounds, and expanding logical volumes safely with immediate on-the-fly filesystem extensions.
+👉 **[Watch the Storage Expansion Here](https://asciinema.org/a/pYWLOgjccKnWreE7)**
+
+### 3. SELinux Port Contexts & Firewalld Rich Rules
+Demonstrates enterprise-grade network hardening. Includes modifying non-standard port behaviors using `semanage port` and structuring complex traffic filtering using advanced `firewalld` rich language rules.
+👉 **[Watch the Security Configuration Here](https://asciinema.org/a/r03G1tcp4PrtWfZ2)**
+
+### 4. Storage Automation (AutoFS & Network File Systems)
+Configuring on-demand network storage. Demonstrates linking remote NFS mount targets using `autofs` wildcards, allowing storage mounts to dynamically spin up and map on hardware access and quietly unmount when idle.
+👉 **[Watch the Automation Here](https://asciinema.org/a/wJpc7wrb2GT1qqga)**
+
+### 5. File System Permissions (ACLs & SGID)
+An exploration of collaborative enterprise directories. Shows the deployment of the `setgid` bit for inherited group ownership alongside POSIX Access Control Lists (ACLs) to manage non-standard access requirements cleanly.
+👉 **[Watch the Permissions Configuration Here](https://asciinema.org/a/wJpc7wrb2GT1qqga)**
+
+### 6. Network Topology & Time Sync (Nmcli & Chrony)
+Enterprise client initialization. Shows network interface provisioning entirely via the standard RHEL 9 `nmcli` mechanism, followed by configuring NTP synchronization clients utilizing `chrony` to guarantee unified log timestamps.
+👉 **[Watch the Networking Steps Here](https://asciinema.org/a/gFT4hB9uWk0ZND2u)**
 
 ---
-
-## 🛠️ Technical Implementation Details
-
-### I. Logical Volume Management (LVM) Architecture
-In production deployments, storage demands fluctuate. Using LVM allows raw block devices to be aggregated into abstract pools that can be carved out or scaled up dynamically.
-
-*   **Workflow Executed:** 
-    1. Audited block layer geometry with `pvs`, `vgs`, and `lvs`.
-    2. Extended the logical volume using `lvextend`.
-    3. Grew the online XFS file system using `xfs_growfs` to reflect changes immediately without unmounting.
-
-### II. Network Time Protocol (NTP) Synchronization
-Precise system time synchronization is non-negotiable in enterprise infrastructure to ensure valid security logging (SELinux audit trails), Kerberos authentication tickets, and correct multi-node database clustering sequence.
-
-*   **Workflow Executed:**
-    1. Baseline synchronization checked using `chronyc tracking`.
-    2. Configured secure public NTP strata sources inside `/etc/chrony.conf`.
-    3. Persisted configuration using `systemctl restart chronyd` and `systemctl enable chronyd`.
-    4. Verified active source offset metrics via `chronyc sources -v`.
+*All environments are configured to align with RHEL 9 infrastructure expectations and RHCSA (EX200) production standards.*
