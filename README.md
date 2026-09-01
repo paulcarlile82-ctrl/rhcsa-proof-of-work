@@ -2,6 +2,9 @@
 
 Public portfolio showcasing practical Red Hat Enterprise Linux system administration competencies and infrastructure workflows.
 
+- **AI Stack Deployment:** [ai-stack-private](https://github.com/paulcarlile82-ctrl/ai-stack-private)
+- **Media Automation Stack:** [media-stack](https://github.com/paulcarlile82-ctrl/media-stack)
+
 ## Credential
 - **Certification:** Red Hat Certified System Administrator (RHCSA - EX200)
 
